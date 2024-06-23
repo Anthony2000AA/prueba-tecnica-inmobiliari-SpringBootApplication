@@ -6,19 +6,26 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Configuration
 public class CorsConfig {
 
     @Bean
-    public CorsFilter corsFilter(){
+    public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        String originCors= "http://localhost:4200, https://prueba-tecnica-inmobiliaria-angular-applicaton.vercel.app";
+
+        // Define los orígenes permitidos como un arreglo
+        List<String> allowedOrigins = Arrays.asList("http://localhost:4200", "https://prueba-tecnica-inmobiliaria-angular-applicaton.vercel.app");
+
         config.setAllowCredentials(true);
-        config.addAllowedOrigin(originCors);
+        config.setAllowedOrigins(allowedOrigins);
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
+
         return new CorsFilter(source);
     }
 }
