@@ -13,7 +13,7 @@ public class CorsConfig {
     public CorsFilter corsFilter(){
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        String originCors= "http://localhost:4200";
+        String originCors= "http://localhost:4200, https://prueba-tecnica-inmobiliaria-angular-applicaton.vercel.app";
         config.setAllowCredentials(true);
         config.addAllowedOrigin(originCors);
         config.addAllowedHeader("*");
